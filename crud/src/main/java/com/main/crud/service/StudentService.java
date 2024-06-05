@@ -33,8 +33,16 @@ public class StudentService {
 
 
     //actualizar
-    public void Update(Student student) {
-        studentRepository.save(student);
+    public void UpdateById(Long id, Student student) {
+        Optional<Student> optionalStudent = studentRepository.findById(id);
+        if (optionalStudent.isPresent()) {
+            Student student1 = optionalStudent.get();
+            student1.setFirstName(student.getFirstName());
+            student1.setLastName(student.getLastName());
+            student1.setEmail(student.getEmail());
+            studentRepository.save(student1);
+        }
+
     }
 
 
