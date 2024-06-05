@@ -40,13 +40,13 @@ public class StudentController {
 
     }
 
-    @PutMapping
-    public void Update(@RequestBody Student student){
-        studentService.Update(student);
+    @PutMapping("/{studentId}")
+    public void UpdateById(@PathVariable Long studentId, @RequestBody Student student) {
+        studentService.UpdateById(studentId,student);
     }
 
     @DeleteMapping("/{studentId}")
-    public void deletes( @PathVariable("studentId") Long studentId) {
+    public void deletes(@PathVariable("studentId") Long studentId) {
         studentService.delete(studentId);
     }
 
